@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "React Js",
+      "completed": true
+    },
+    {
+      "id": "2",
+      "title": "Angular Js",
+      "completed": true
+    }
+  ]
+}

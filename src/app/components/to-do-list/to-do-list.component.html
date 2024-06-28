@@ -1,0 +1,77 @@
+<div class="row my-4">
+    <div class="col-md-6">
+        <h3>List Of Tasks</h3>
+    </div>
+    <div class="col-md-6 text-right">
+        <button (click)="showForm = !showForm" class="btn btn-dark btn-sm">
+            <i class="fa fa-plus"></i>
+            New Task
+        </button>
+    </div>
+</div>
+@if (showForm) {
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="form-group">
+                <label for="label"></label>
+                <input [(ngModel)]="myTodo.title" type="text" class="form-control">
+            </div>
+    
+    
+            <div class="form-check my-3">
+                <input [(ngModel)]="myTodo.completed" class="form-check-input" type="checkbox"  />
+                <label  class="form-check-label" for=""> Complated</label>
+            </div>
+            @if (isEditForm) {
+                <button (click)="updateTodo()" class="btn btn-warning btn-block">
+                    <div class="fa fa-send"></div>
+                    Update Task
+                </button>
+            }
+            
+            @if (!isEditForm) {
+                <button (click)="addTodo()" class="btn btn-success btn-block">
+                    <div class="fa fa-send"></div>
+                    Add Task
+                </button>
+            }
+           
+        </div>
+    </div>
+    
+}
+
+<div class="row" >
+    <div class="col-md-6 mx-auto">
+            <input [(ngModel)]="searchTodo" (keyup)="searchTodoList()" type="text" class="form-control my-4">
+        <ul class="list-group">
+           @for (todo of todos; track $index) {
+            <li  class="list-group-item d-flex justify-content-between align-items-center">
+                
+                <button (click)="editTodo(todo)" class="btn btn-sm btn-info">
+                    <i class="fa fa-pencil">
+                    </i>
+                </button>
+                {{todo.title}}
+                <span  [routerLink]="['/tododetails', todo.id]"  [ngClass]="{
+                    'bg-info': todo.completed,
+                    'bg-danger': !todo.completed
+                    }" class="badge  badge-pill">
+                <i [ngClass]="{
+                    'fa-thumbs-up': todo.completed,
+                    'fa-thumbs-down': !todo.completed
+                    }"
+                class="fa " aria-hidden="true"></i>
+            </span>
+          
+            <button (click)="deleteTodo(todo.id)" class="btn btn-sm btn-danger">
+                <i class="fa fa-trash">
+
+                </i>
+            </button>
+            </li>
+        }
+        </ul>
+        
+    </div>
+</div>
