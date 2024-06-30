@@ -8,11 +8,12 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 import { ToDoListDetailComponent } from './components/to-do-list-detail/to-do-list-detail.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 export const routes: Routes = [
   {path: '', component: ToDoListComponent},
   {path: 'navbar', component: NavbarComponent},
-  {path: 'about', component: AboutComponent},
+  {path: 'chart', component: ChartComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'footer', component: FooterComponent},
